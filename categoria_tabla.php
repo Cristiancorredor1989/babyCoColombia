@@ -36,7 +36,7 @@ include("barra_lateral.php");
 				<div class="ContBuscar">
 					<div style="float: left;">
 						<a href="categoria_tabla.php" class="BotonesTeam">Inicio</a>
-						<input class="BotonesTeam" type="button" value="Buscar" name="btnbuscar">
+						<input class="BotonesTeam" type="submit" value="Buscar" name="btnbuscar">
 						<input class="CajaTextoBuscar" type="text" name="txtbuscar" placeholder="Ingresar categoría" autocomplete="off">
 					</div>
 					<div style="float:right">
