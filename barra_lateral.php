@@ -1,4 +1,5 @@
 <?php
+ob_start();
 session_start();
 include('conexion.php');
 if (isset($_SESSION['usuarioingresando'])) {
@@ -14,7 +15,7 @@ if (isset($_SESSION['usuarioingresando'])) {
 <html>
 
 <head>
-	<title>VaidrollTeam</title>
+	<title>BabycoColombia</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="style.css">
 </head>

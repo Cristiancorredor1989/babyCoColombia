@@ -8,8 +8,8 @@ include("barra_lateral.php");
 <body>
 	<div class="ContenedorPrincipal">
 		<?php
-
-		$filasmax = 7;
+		$buscar = '';
+		$filasmax = 10;
 
 		if (isset($_GET['pag'])) {
 			$pagina = $_GET['pag'];
@@ -20,7 +20,7 @@ include("barra_lateral.php");
 		if (isset($_POST['btnbuscar'])) {
 			$buscar = $_POST['txtbuscar'];
 
-			$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos where nombre = '" . $buscar . "'");
+			$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos where nombre LIKE '%" . $buscar . "%'");
 		} else {
 			$sqlcat = mysqli_query($conn, "SELECT * FROM categoria_productos ORDER BY id ASC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
 		}
@@ -40,6 +40,7 @@ include("barra_lateral.php");
 						<input class="CajaTextoBuscar" type="text" name="txtbuscar" placeholder="Ingresar categoría" autocomplete="off">
 					</div>
 					<div style="float:right">
+						<?php echo "<a class='BotonesTeam4' href=\"categoria_reporte.php?filter=$buscar\" target='_blank'>Generar Reporte</a>"; ?>
 						<?php echo "<a class='BotonesTeam5' href=\"categoria_registrar.php?pag=$pagina\">Agregar categoría</a>"; ?>
 					</div>
 				</div>

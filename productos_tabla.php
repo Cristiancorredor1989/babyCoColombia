@@ -9,7 +9,8 @@ include("barra_lateral.php");
 	<div class="ContenedorPrincipal">
 		<?php
 
-		$filasmax = 7;
+		$filasmax = 10;
+		$buscar = '';
 
 		if (isset($_GET['pag'])) {
 			$pagina = $_GET['pag'];
@@ -21,7 +22,7 @@ include("barra_lateral.php");
 			$buscar = $_POST['txtbuscar'];
 
 			$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,descripcion,precio,cat.nombre as categoria 
-FROM productos pro, categoria_productos cat where pro.categoria_id=cat.id and descripcion like '" . $buscar . "%'");
+FROM productos pro, categoria_productos cat where pro.categoria_id=cat.id and descripcion like '%" . $buscar . "%'");
 		} else {
 			$sqlusu = mysqli_query($conn, "SELECT pro.id,pro.nombre,descripcion,precio,cat.nombre as categoria 
 FROM productos pro, categoria_productos cat where pro.categoria_id=cat.id ORDER BY pro.id ASC LIMIT " . (($pagina - 1) * $filasmax)  . "," . $filasmax);
@@ -43,6 +44,7 @@ FROM productos pro, categoria_productos cat where pro.categoria_id=cat.id ORDER 
 						<input class="CajaTextoBuscar" type="text" name="txtbuscar" placeholder="Ingresar descripción del producto" autocomplete="off">
 					</div>
 					<div style="float:right;">
+						<?php echo "<a class='BotonesTeam4' href=\"productos_reporte.php?filter=$buscar\" target='_blank'>Generar Reporte</a>"; ?>
 						<?php echo "<a class='BotonesTeam5' href=\"productos_registrar.php?pag=$pagina\">Agregar producto</a>"; ?>
 					</div>
 				</div>
